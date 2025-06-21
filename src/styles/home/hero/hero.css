@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.hero .container {
+  @apply lg:mx-[5rem] 2xl:mx-[8rem];
+}
+
+.hero h2 {
+  @apply lg:text-lg 2xl:text-xl font-normal;
+}
+
+.hero h1 {
+  @apply xl:text-[3.5rem] 2xl:text-[4.7rem] font-bold leading-[5.5rem] tracking-normal;
+}
