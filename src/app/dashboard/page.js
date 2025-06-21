@@ -21,15 +21,14 @@ export default function DashboardPage() {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    .then((response) => {
+    }).then((response) => {
       if (response.ok) {
         window.location.href = "/login";
       } else {
         console.error("Logout failed");
       }
     });
-  }
+  };
 
   const renderContent = () => {
     switch (activeMenu) {
@@ -69,7 +68,11 @@ export default function DashboardPage() {
       {/* <Navbar2 /> */}
 
       <div className="flex h-[calc(100vh-64px)]">
-        <SideNavbar activeMenu={activeMenu} onMenuChange={setActiveMenu} onLogout={onLogout} />
+        <SideNavbar
+          activeMenu={activeMenu}
+          onMenuChange={setActiveMenu}
+          onLogout={onLogout}
+        />
         {renderContent()}
       </div>
     </div>
