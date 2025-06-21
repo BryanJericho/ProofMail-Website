@@ -16,8 +16,19 @@ export default function DashboardPage() {
   const [activeMenu, setActiveMenu] = useState("profile");
 
   const onLogout = () => {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-    window.location.href = "/login";
+    fetch("/api/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      if (response.ok) {
+        window.location.href = "/login";
+      } else {
+        console.error("Logout failed");
+      }
+    });
   }
 
   const renderContent = () => {
