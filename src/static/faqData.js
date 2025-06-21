@@ -11,33 +11,33 @@ export const faqData = [
     answer:
       "Right now, ProofMail works seamlessly with Gmail, the world's most popular email service. Support for other platforms is on our roadmap, so stay tuned!",
   },
-  {
-    id: 3,
-    question: "How does ProofMail work?",
-    answer: `ProofMail works through a simple 3-step process:
-      <ul>
-        <li>Write your email as usual in Gmail.</li>
-        <li>Connect your Phantom Wallet to authenticate</li>
-        <li>Compose emails as usual - ProofMail automatically adds cryptographic signatures</li>
-      </ul>
-      <p>Each signature is verified on the Solana blockchain for maximum security.</p>`,
-  },
+  // {
+  //   id: 3,
+  //   question: "How does ProofMail work?",
+  //   answer: `ProofMail works through a simple 3-step process:
+  //     <ul>
+  //       <li>Write your email as usual in Gmail.</li>
+  //       <li>Connect your Phantom Wallet to authenticate</li>
+  //       <li>Compose emails as usual - ProofMail automatically adds cryptographic signatures</li>
+  //     </ul>
+  //     <p>Each signature is verified on the Solana blockchain for maximum security.</p>`,
+  // },
   {
     id: 4,
     question: "Does ProofMail read my email content?",
-    answer: `<strong>Absolutely not.</strong> ProofMail never reads, stores, or analyzes your email content. It only attaches a signature in the footer.`,
+    answer: `Absolutely not. ProofMail never reads, stores, or analyzes your email content. It only attaches a signature in the footer.`,
   },
   {
     id: 5,
     question: "Does ProofMail require blockchain transaction fees?",
     answer:
-      "No. ProofMail does not send any transactions to the blockchain, it only uses signMessage locally in your Phantom Wallet. No gas fees.",
+      "No, ProofMail does not send any transactions to the blockchain, it only uses signMessage locally in your Phantom Wallet. No gas fees.",
   },
   {
     id: 6,
     question: "Why do I need a Phantom Wallet?",
     answer:
-      "ProofMail uses your Phantom Wallet to securely sign emails with your unique cryptographic key. Phantom is secure, simple, and trusted by many Web3 users. Currently, ProofMail supports Phantom only.",
+      "ProofMail uses your Phantom Wallet to securely sign each email with your unique cryptographic key. Phantom is secure, simple, and widely trusted in the Solana ecosystem. Currently, ProofMail supports Phantom only, but we plan to add support for more wallets in the future.",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const faqData = [
     id: 8,
     question: "Does the recipient need ProofMail too?",
     answer:
-      "Yes. To automatically verify your signature, the recipient should also use the ProofMail extension. We are developing ways to make verification public and universal in the future.",
+      "Yes. To automatically verify your signature, the recipient should also have the ProofMail extension installed. We’re working on making signature verification accessible to everyone in the future.",
   },
   {
     id: 9,

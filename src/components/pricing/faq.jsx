@@ -18,7 +18,8 @@ export const FAQ = () => {
         answer.includes("<ul>") ||
         answer.includes("<ol>") ||
         answer.includes("<li>") ||
-        answer.includes("<a")
+        answer.includes("<a") ||
+        answer.includes("<strong>")
       ) {
         return (
           <div
@@ -62,7 +63,7 @@ export const FAQ = () => {
   };
 
   return (
-    <div className="mx-auto py-4 lg:pb-10 px-4 lg:px-10 text-[#111827] min-h-[80dvh] flex flex-col items-center justify-center">
+    <div className="mx-auto py-4 px-4 lg:px-10 lg:py-20 text-[#111827] flex flex-col items-center justify-center">
       <div className="flex flex-col items-center text-center mb-12 space-y-4">
         <h2>Frequently Asked Questions</h2>
         <p className="subHeading">

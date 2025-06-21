@@ -87,7 +87,7 @@ h2 {
 }
 
 .faq-content strong {
-  @apply font-semibold;
+  @apply font-bold;
 }
 
 .faq-list {
