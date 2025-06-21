@@ -17,7 +17,8 @@ export const FAQ = () => {
       if (
         answer.includes("<ul>") ||
         answer.includes("<ol>") ||
-        answer.includes("<li>")
+        answer.includes("<li>") ||
+        answer.includes("<a")
       ) {
         return (
           <div
