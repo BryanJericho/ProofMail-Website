@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -17,7 +17,7 @@ import { FiShield, FiCheckCircle, FiUser } from "react-icons/fi";
 export const UsageComp = () => {
   const [currentPlan] = useState("Free");
 
-  const [todayUsage] = useState({
+  const [todayUsage, setTodayUsage] = useState({
     createSign: 9,
     verifySign: 32,
   });
@@ -50,6 +50,31 @@ export const UsageComp = () => {
     (todayUsage.verifySign / currentLimits.verifySign) * 100;
 
   const isNearLimit = createPercentage > 80 || verifyPercentage > 80;
+
+  useEffect(() => {
+    const response = fetch("/api/me/", {
+      method: "GET",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    response
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setTodayUsage({
+            createSign: currentLimits.createSign - data.user.signQuota,
+            verifySign: currentLimits.verifySign - data.user.verifyQuota,
+          });
+        } else {
+          console.error("Failed to fetch today's usage:", data.error);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching today's usage:", error);
+      });
+  }, []);
 
   const UsageCard = ({
     title,

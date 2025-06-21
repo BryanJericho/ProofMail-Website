@@ -116,8 +116,12 @@ export const createUser = async (userData) => {
       wallet: wallet.trim(),
       password: hashedPassword,
       registeredAt: serverTimestamp(),
-      signatures: [],
       emailVerified: true,
+      maxSignQuota: 10,
+      maxVerifyQuota: 50,
+      resetQuotaTime: serverTimestamp(),
+      signQuota: 10,
+      verifyQuota: 50,
     };
 
     const docRef = await addDoc(collection(db, "users"), newUser);

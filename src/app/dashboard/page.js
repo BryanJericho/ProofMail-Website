@@ -15,6 +15,11 @@ import React, { useState } from "react";
 export default function DashboardPage() {
   const [activeMenu, setActiveMenu] = useState("profile");
 
+  const onLogout = () => {
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    window.location.href = "/login";
+  }
+
   const renderContent = () => {
     switch (activeMenu) {
       case "profile":
@@ -53,7 +58,7 @@ export default function DashboardPage() {
       {/* <Navbar2 /> */}
 
       <div className="flex h-[calc(100vh-64px)]">
-        <SideNavbar activeMenu={activeMenu} onMenuChange={setActiveMenu} />
+        <SideNavbar activeMenu={activeMenu} onMenuChange={setActiveMenu} onLogout={onLogout} />
         {renderContent()}
       </div>
     </div>
