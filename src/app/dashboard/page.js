@@ -1,6 +1,14 @@
 "use client";
 
+import EmailReport from "@/components/dashboard/analytics/emailReport";
+import { LogComp } from "@/components/dashboard/analytics/logComp";
+import { BillingHistory } from "@/components/dashboard/billing/billingHistory";
+import { PaymentMethods } from "@/components/dashboard/billing/paymentMethods";
+import { PricingPlanComp } from "@/components/dashboard/billing/pricingPlanComp";
+import { ChangePasswordComp } from "@/components/dashboard/profile/changePass";
 import { ProfileComp } from "@/components/dashboard/profile/profileComp";
+import TeamManagement from "@/components/dashboard/profile/teamManagement";
+import { UsageComp } from "@/components/dashboard/profile/usageComp";
 import { SideNavbar } from "@/components/dashboard/sideNavbar";
 import React, { useState } from "react";
 
@@ -11,83 +19,28 @@ export default function DashboardPage() {
     switch (activeMenu) {
       case "profile":
         return <ProfileComp />;
+      case "changePassword":
+        return <ChangePasswordComp />;
       case "team":
+        return <TeamManagement />;
+      case "emailReports":
+        return <EmailReport />;
+      case "logs":
+        return <LogComp />;
+      case "usage":
+        return <UsageComp />;
+      case "pricingPlans":
+        return <PricingPlanComp />;
+      case "paymentMethods":
+        return <PaymentMethods />;
+      case "billingHistory":
+        return <BillingHistory />;
+      case "logout":
         return (
-          <div className="flex-1 p-8 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-2xl font-bold text-[#111827]">
-                Team Management
-              </h1>
-              <p className="text-gray-600 mt-2">
-                Manage your team members and permissions (Pro feature)
-              </p>
-            </div>
-          </div>
-        );
-      case "verification":
-        return (
-          <div className="flex-1 p-8 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-2xl font-bold text-[#111827]">
-                Email Verification
-              </h1>
-              <p className="text-gray-600 mt-2">
-                Manage your email verification settings
-              </p>
-              {/* <VerificationComponent /> */}
-            </div>
-          </div>
-        );
-      case "analytics":
-        return (
-          <div className="flex-1 p-8 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-2xl font-bold text-[#111827]">Analytics</h1>
-              <p className="text-gray-600 mt-2">
-                View your verification statistics and usage
-              </p>
-              {/* <AnalyticsComponent /> */}
-            </div>
-          </div>
-        );
-      case "wallet":
-        return (
-          <div className="flex-1 p-8 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-2xl font-bold text-[#111827]">
-                Blockchain Wallet
-              </h1>
-              <p className="text-gray-600 mt-2">
-                Manage your Solana wallet connection
-              </p>
-              {/* <WalletComponent /> */}
-            </div>
-          </div>
-        );
-      case "billing":
-        return (
-          <div className="flex-1 p-8 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-2xl font-bold text-[#111827]">
-                Billing & Plans
-              </h1>
-              <p className="text-gray-600 mt-2">
-                Manage your subscription and payment methods
-              </p>
-              {/* <BillingComponent /> */}
-            </div>
-          </div>
-        );
-      case "settings":
-        return (
-          <div className="flex-1 p-8 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-2xl font-bold text-[#111827]">Settings</h1>
-              <p className="text-gray-600 mt-2">
-                Configure your application preferences
-              </p>
-              {/* <SettingsComponent /> */}
-            </div>
+          <div className="flex items-center justify-center h-full">
+            <h1 className="text-2xl font-bold text-gray-700">
+              You have been logged out.
+            </h1>
           </div>
         );
       default:

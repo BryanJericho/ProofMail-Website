@@ -1,3 +1,4 @@
+import CustomSelect from "@/components/customSelect";
 import {
   countries,
   industries,
@@ -43,12 +44,12 @@ export const ProfileComp = () => {
   };
 
   return (
-    <div className="flex-1 p-8 ">
+    <div className="flex-1 p-8">
       <div className="w-full mx-auto">
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
+        <div className="mb-10">
+          <div className="flex items-center justify-between bg-white rounded-lg border border-gray-200 p-6 shadow-xs">
             <div>
-              <h1 className="text-2xl font-bold text-[#111827]">
+              <h1 className="text-3xl font-bold text-[#111827] mb-2">
                 Profile Settings
               </h1>
               <p className="text-gray-600 mt-1">
@@ -86,7 +87,7 @@ export const ProfileComp = () => {
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="p-6">
+          <div className="px-6 py-10">
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-[#3B82F6] rounded-full flex items-center justify-center mr-4">
                 <FiUser className="w-8 h-8 text-white" />
@@ -152,41 +153,27 @@ export const ProfileComp = () => {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-[#111827] mb-2">
-                        Country
-                      </label>
-                      <select
-                        name="country"
+                      <CustomSelect
+                        label="Country"
                         value={formData.country}
-                        onChange={handleInputChange}
+                        options={countries}
+                        onChange={(val) =>
+                          setFormData((prev) => ({ ...prev, country: val }))
+                        }
                         disabled={!isEditing}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
-                      >
-                        {countries.map((country) => (
-                          <option key={country} value={country}>
-                            {country}
-                          </option>
-                        ))}
-                      </select>
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-[#111827] mb-2">
-                        Language
-                      </label>
-                      <select
-                        name="language"
+                      <CustomSelect
+                        label="Language"
                         value={formData.language}
-                        onChange={handleInputChange}
+                        options={languages}
+                        onChange={(val) =>
+                          setFormData((prev) => ({ ...prev, language: val }))
+                        }
                         disabled={!isEditing}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
-                      >
-                        {languages.map((language) => (
-                          <option key={language} value={language}>
-                            {language}
-                          </option>
-                        ))}
-                      </select>
+                      />
                     </div>
                   </div>
                 </div>
@@ -226,113 +213,34 @@ export const ProfileComp = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-[#111827] mb-2">
-                      Industry
-                    </label>
-                    <select
-                      name="industry"
+                    <CustomSelect
+                      label="Industry"
                       value={formData.industry}
-                      onChange={handleInputChange}
+                      options={industries}
+                      onChange={(val) =>
+                        setFormData((prev) => ({ ...prev, industry: val }))
+                      }
                       disabled={!isEditing}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
-                    >
-                      {industries.map((industry) => (
-                        <option key={industry} value={industry}>
-                          {industry}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-[#111827] mb-2">
-                      Primary Use Case
-                    </label>
-                    <select
-                      name="primaryUseCase"
+                    <CustomSelect
+                      label=" Primary Use Case"
                       value={formData.primaryUseCase}
-                      onChange={handleInputChange}
+                      options={useCases}
+                      onChange={(val) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          primaryUseCase: val,
+                        }))
+                      }
                       disabled={!isEditing}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
-                    >
-                      {useCases.map((useCase) => (
-                        <option key={useCase} value={useCase}>
-                          {useCase}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </div>
                 </div>
               </div>
             </div>
-
-            {isEditing && (
-              <div className="mt-8 pt-6 border-t border-gray-200 text-[#111827]">
-                <h3 className="text-lg font-semibold text-[#111827] mb-4">
-                  Change Password
-                </h3>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-[#111827] mb-2">
-                      Current Password
-                    </label>
-                    <div className="relative">
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        name="currentPassword"
-                        value={formData.currentPassword}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent"
-                        placeholder="Enter current password"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute inset-y-0 right-0 flex items-center pr-3"
-                      >
-                        {showPassword ? (
-                          <FiEyeOff className="w-4 h-4 text-gray-400" />
-                        ) : (
-                          <FiEye className="w-4 h-4 text-gray-400" />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-[#111827] mb-2">
-                      New Password
-                    </label>
-                    <input
-                      type="password"
-                      name="newPassword"
-                      value={formData.newPassword}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent"
-                      placeholder="Enter new password"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-[#111827] mb-2">
-                      Confirm New Password
-                    </label>
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent"
-                      placeholder="Confirm new password"
-                    />
-                  </div>
-                </div>
-                <p className="text-sm text-gray-500 mt-2">
-                  Leave password fields empty if you don't want to change your
-                  password.
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </div>

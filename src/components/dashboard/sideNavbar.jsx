@@ -1,23 +1,30 @@
 import React from "react";
-import {
-  FiUser,
-  FiUsers,
-  FiCreditCard,
-  FiSettings,
-  FiShield,
-  FiMail,
-} from "react-icons/fi";
+import { FiUser, FiUsers, FiCreditCard, FiLogOut } from "react-icons/fi";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import { FaWallet } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { FaLock } from "react-icons/fa";
+import { IoPricetagsOutline } from "react-icons/io5";
+import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
+import { TbFileReport } from "react-icons/tb";
+import { RiProgress1Line } from "react-icons/ri";
 
-export const SideNavbar = ({ activeMenu = "profile", onMenuChange }) => {
+export const SideNavbar = ({
+  activeMenu = "profile",
+  onMenuChange,
+  onLogout,
+}) => {
   const menuItems = [
     {
       id: "profile",
       label: "Profile",
       icon: FiUser,
+      category: "account",
+    },
+    {
+      id: "changePassword",
+      label: "Change Password",
+      icon: FaLock,
       category: "account",
     },
     {
@@ -28,43 +35,50 @@ export const SideNavbar = ({ activeMenu = "profile", onMenuChange }) => {
       badge: "Pro",
     },
     {
-      id: "verification",
-      label: "Email Verification",
-      icon: FiShield,
-      category: "main",
-    },
-    {
-      id: "analytics",
-      label: "Analytics",
+      id: "emailReports",
+      label: "Email Reports",
       icon: TbBrandGoogleAnalytics,
-      category: "main",
+      category: "analytics",
+      badge: "Pro",
     },
     {
-      id: "wallet",
-      label: "Blockchain Wallet",
-      icon: FaWallet,
-      category: "blockchain",
+      id: "logs",
+      label: "Logs",
+      icon: TbFileReport,
+      category: "analytics",
+      badge: "Pro",
     },
     {
-      id: "billing",
-      label: "Billing & Plans",
+      id: "usage",
+      label: "Usage",
+      icon: RiProgress1Line,
+      category: "analytics",
+    },
+    {
+      id: "pricingPlans",
+      label: "Pricing plans",
+      icon: IoPricetagsOutline,
+      category: "billing",
+    },
+    {
+      id: "paymentMethods",
+      label: "Payment methods",
       icon: FiCreditCard,
       category: "billing",
     },
     {
-      id: "settings",
-      label: "Settings",
-      icon: FiSettings,
-      category: "system",
+      id: "billingHistory",
+      label: "Billing History",
+      icon: LiaFileInvoiceDollarSolid,
+      category: "billing",
     },
   ];
 
   const categories = {
     account: "Account Management",
-    main: "Verification",
+    analytics: "Analytics",
     blockchain: "Blockchain",
     billing: "Billing",
-    system: "System",
   };
 
   const groupedMenus = menuItems.reduce((acc, item) => {
@@ -74,6 +88,12 @@ export const SideNavbar = ({ activeMenu = "profile", onMenuChange }) => {
     acc[item.category].push(item);
     return acc;
   }, {});
+
+  const handleLogout = () => {
+    if (onLogout) {
+      onLogout();
+    }
+  };
 
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-screen flex flex-col">
@@ -104,7 +124,7 @@ export const SideNavbar = ({ activeMenu = "profile", onMenuChange }) => {
                   <button
                     key={item.id}
                     onClick={() => onMenuChange?.(item.id)}
-                    className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer ${
                       isActive
                         ? "bg-[#3B82F6] text-white"
                         : "text-[#111827] hover:bg-gray-50"
@@ -134,7 +154,7 @@ export const SideNavbar = ({ activeMenu = "profile", onMenuChange }) => {
       </div>
 
       <div className="p-4 border-t border-gray-200">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 mb-4">
           <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
             <FiUser className="w-4 h-4 text-gray-600" />
           </div>
@@ -145,6 +165,14 @@ export const SideNavbar = ({ activeMenu = "profile", onMenuChange }) => {
             <p className="text-xs text-gray-500 truncate">john@example.com</p>
           </div>
         </div>
+
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer text-white bg-[#3B82F6] hover:blue-700 border"
+        >
+          <FiLogOut className="w-4 h-4 mr-3 text-white" />
+          <span className="flex-1 text-left">Logout</span>
+        </button>
       </div>
     </div>
   );
