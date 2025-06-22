@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export async function GET(request) {
-  cookies().set("token", "", { maxAge: 0 });
+  const cookieStore = await cookies();
+  cookieStore.set("token", "", { maxAge: 0 });
+
   return NextResponse.json(
     {
       success: true,
@@ -20,7 +22,9 @@ export async function GET(request) {
 
 export async function POST() {
   try {
-    cookies().set("token", "", {
+    const cookieStore = await cookies();
+
+    cookieStore().set("token", "", {
       httpOnly: true,
       secure: true,
       maxAge: 0,

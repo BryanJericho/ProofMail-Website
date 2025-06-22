@@ -4,7 +4,9 @@ import { jwtVerify } from "jose";
 
 export async function GET() {
   try {
-    const token = cookies().get("token")?.value;
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
+    cookieStore.set("name", "value");
 
     if (!token) {
       return NextResponse.json({ error: "No token found" }, { status: 401 });
