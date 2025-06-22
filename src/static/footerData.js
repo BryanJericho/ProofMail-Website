@@ -1,4 +1,4 @@
-import { FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaFacebook, FaInstagram, FaDiscord } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const GmailIcon = ({ className }) => (
@@ -11,7 +11,7 @@ const quickLinks = [
   { name: "How it Works", path: "/how-it-works" },
   { name: "Pricing", path: "/pricing" },
   { name: "Blog", path: "/blog" },
-  { name: "Contact Us", path: "/contact-us" },
+  { name: "Contact Us", path: "/contact" },
 ];
 
 const legalLinks = [
@@ -40,9 +40,9 @@ const socialLinks = [
     icon: <FaLinkedin className="w-5 h-5" />,
   },
   {
-    name: "Facebook",
+    name: "Discord",
     path: "#",
-    icon: <FaFacebook className="w-5 h-5" />,
+    icon: <FaDiscord className="w-5 h-5" />,
   },
   {
     name: "Gmail",

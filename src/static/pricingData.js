@@ -34,8 +34,8 @@ export const pricingData = [
     buttonText: "Start Free Trial",
     buttonStyle: "primary",
     features: [
-      { text: "20 create signature per day included", included: true },
-      { text: "15 verifications per day included", included: true },
+      { text: "1000 create signature per day included", included: true },
+      { text: "5000 verifications per day included", included: true },
       { text: "Team roles & user management", included: true },
       { text: "Add up to 5 team members", included: true },
       { text: "Advanced logs & verification history", included: true },
