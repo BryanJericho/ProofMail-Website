@@ -2,7 +2,7 @@ import { FaFire } from "react-icons/fa";
 import { PriceDisplay } from "./priceDisplay";
 import { FeaturesList } from "./featureList";
 
-export const PricingCard = ({ plan, billingCycle }) => {
+export const PricingCard = ({ plan }) => {
   return (
     <div
       className={`relative bg-white rounded-2xl lg:rounded-3xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl ${
@@ -39,7 +39,7 @@ export const PricingCard = ({ plan, billingCycle }) => {
             {plan.description}
           </p>
 
-          <PriceDisplay plan={plan} billingCycle={billingCycle} />
+          <PriceDisplay plan={plan} />
         </div>
 
         <button

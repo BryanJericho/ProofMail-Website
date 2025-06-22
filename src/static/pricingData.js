@@ -6,7 +6,6 @@ export const pricingData = [
     description:
       "Try ProofMail with a limited quota — perfect for testing and personal use.",
     monthlyPrice: 0,
-    annualPrice: 0,
     period: "forever",
     popular: false,
     buttonText: "Get Started Free",
@@ -29,8 +28,7 @@ export const pricingData = [
     tagline: "Most popular for professionals",
     description:
       "Ideal for freelancers, security teams, and small businesses needing robust email verification.",
-    monthlyPrice: 19,
-    annualPrice: 15,
+    monthlyPrice: 4.99,
     period: "month",
     popular: true,
     buttonText: "Start Free Trial",
@@ -49,15 +47,15 @@ export const pricingData = [
   {
     id: 3,
     name: "Enterprise",
-    tagline: "Tailored for organizations",
+    tagline: "Scale without limits",
     description:
-      "Unlimited verifications, dedicated support, and custom compliance solutions.",
-    monthlyPrice: 99,
-    annualPrice: 79,
+      "Unlimited verifications, white-glove support, and enterprise-grade security. Pricing scales with your business - the more you use, the more you save.",
+    monthlyPrice: 19.99,
     period: "month",
     popular: false,
-    buttonText: "Contact Sales",
+    buttonText: "Get Custom Quote",
     buttonStyle: "secondary",
+    customPricing: true,
     features: [
       { text: "Unlimited verifications (fair usage)", included: true },
       { text: "Admin dashboard & team roles", included: true },
@@ -67,6 +65,8 @@ export const pricingData = [
       { text: "Full audit logs & export", included: true },
       { text: "24/7 priority support", included: true },
       { text: "Custom domain & white label options", included: true },
+      { text: "Volume discounts available", included: true },
+      { text: "Flexible pricing based on usage", included: true },
     ],
   },
 ];
